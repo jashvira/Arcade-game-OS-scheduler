@@ -18,6 +18,7 @@ c01 1 20 13
 c02 1 28 17
 c03 1 38 28
 ...
+
 In the first line, customer c00 arrived at time 6. This customer is a member and has a high priority. This customer wishes to play for 23 units of time in total. Note that 0 denotes high priority, while 1 denotes regular priority.
 
 An output data file is a log of machine usage as a result of a particular scheduling approach. For a given input file, an output file can be generated using the program in "scheduler.cpp". Each such output file is also called a scheduling.
