@@ -38,3 +38,40 @@ Example:
 
 
 In this example, the machine was unoccupied in time slots 0, ..., 5. Then starting from time slot 6, the machine was used by customer 0.
+
+Description of the Algorithm:
+
+Algorithm: Priority + Aging + SJF
+
+TIME_ALLOWANCE = 8; 
+Round-robin with time quantum 8
+
+priority_threshold = 100;
+If any regular customer is waiting for this long for the first chance, then give them priority to reduce starvation
+
+Usage of 5 queues
+std::deque<std::pair<int, int> > priority_queue; //priority customers enter here when they first arrive
+std::deque<std::pair<int, int> > priority_played_queue; //priority customers are shifted here once they have played for the first time
+std::deque<std::pair<int, int> > customer_queue; // regular customers enter here when they first arrive
+std::deque<std::pair<int, int> > customer_played_queue; //regular customers are shifted here once they have played for the first time
+std::priority_queue<std::pair<int, int> > long_wait_queue; //regular customers are shifted here if they wait too long for the first chance
+
+Reason for using two different queues (for example priority_queue and priority_played_queue):
+Priority customers when they first arrive are entered into the priority queue. They are given the priority over the other priority customers who have already played before. This is to reduce the response time.
+When they are shifted to the played queue once they finish their first chance, the played queue is sorted in ascending order according the customers' allotted time. SJF is implemented here to reduce overall wait time of customers with shorted playing time.
+If we had used one queue for all the priority customers, implementing SJF would have resulted in customers with smalled allotted time getting preference over customers who have higher slotted time but have been waiting for a longer time. This would increase the maximum response time.
+Same implementation for regular customers.
+
+Sequence: 
+1. Regular Customers who have waiting for threshold time ->
+2. Priority Customers who have arrived but not played -> 
+3. Priority Customers who have played but have slotted time remaining -> 
+4. Regular Customers who have arrived but not played -> 
+5. Regular Customers who have played but have slotted time remaining
+
+Although regular customers who are waiting for their first chance are given preference after the priority customers who have already played due to priority scheduling, regular customers will get higher priority over everyone if they have waited for too long (age reaching the threshold). This is how aging is implemented to reduce maximum response time. 
+
+
+
+
+
