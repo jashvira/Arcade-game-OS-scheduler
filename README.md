@@ -16,7 +16,6 @@ Example:
 c00 0 6 23
 c01 1 20 13
 c02 1 28 17
-c03 1 38 28
 ...
 
 In the first line, customer c00 arrived at time 6. This customer is a member and has a high priority. This customer wishes to play for 23 units of time in total. Note that 0 denotes high priority, while 1 denotes regular priority.
@@ -36,4 +35,6 @@ Example:
 6 0
 7 0
 ...
+
+
 In this example, the machine was unoccupied in time slots 0, ..., 5. Then starting from time slot 6, the machine was used by customer 0.
