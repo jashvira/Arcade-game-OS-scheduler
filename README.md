@@ -1,4 +1,4 @@
-# Arcade-game-OS-scheduler
+# Arcade game OS scheduler
 
 For example, suppose that your program is compiled into ./scheduler, and you also have ./data_1111.txt in the current directory. Then
   ./scheduler data_1111.txt out_1111.txt
