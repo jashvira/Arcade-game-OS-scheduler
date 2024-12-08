@@ -19,7 +19,7 @@ should produce an output file `out_1111.txt` containing a valid scheduling based
 
 ### Validation and Statistics
 
-A provided tool, `compute_stats`, can validate the scheduling and compute metrics such as total wait time. Use it as follows:
+`compute_stats`, can validate the scheduling and compute metrics such as total wait time. Use it as follows:
 
 ```bash
 ./compute_stats data_1111.txt out_1111.txt
